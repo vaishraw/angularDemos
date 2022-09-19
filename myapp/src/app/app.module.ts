@@ -9,6 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { EcommComponent } from './ecomm/ecomm.component';
 import { CartComponent } from './ecomm/cart/cart.component';
 import { EcomproductComponent } from './ecomm/ecomproduct/ecomproduct.component';
+import { NumbersComponent } from './numbers/numbers.component';
+import { BasicHighlightDirective } from './BasicHighlightDirective';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountComponent } from './accounts/account/account.component';
+import { NewaccountComponent } from './accounts/newaccount/newaccount.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { EcomproductComponent } from './ecomm/ecomproduct/ecomproduct.component'
     ProductComponent,
     EcommComponent,
     CartComponent,
-    EcomproductComponent
+    EcomproductComponent,
+    NumbersComponent,
+    BasicHighlightDirective,
+    AccountsComponent,
+    AccountComponent,
+    NewaccountComponent
   ],
   imports: [
     BrowserModule,FormsModule
