@@ -8,4 +8,8 @@ export class AccountService {
     updateStatus(id: number, newstatus: string) {
       this.accounts[id].status = newstatus;
     }
+
+    deleteAccount(id: number) {
+      this.accounts.splice(id, 1);
+    }
   }

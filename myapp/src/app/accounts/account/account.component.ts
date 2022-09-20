@@ -23,6 +23,10 @@ export class AccountComponent implements OnInit {
   changeStatus(newstatus: string) {
     this.accountService.updateStatus(this.id, newstatus);
   }
+
+  deleteAccount() {
+    this.accountService.deleteAccount(this.id);
+  }
 }
 
 

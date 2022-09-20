@@ -14,6 +14,21 @@ import { BasicHighlightDirective } from './BasicHighlightDirective';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
 import { NewaccountComponent } from './accounts/newaccount/newaccount.component';
+import { HomeComponent } from './home/home.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ObservablesComponent } from './observables/observables.component';
+import { TformsComponent } from './tforms/tforms.component';
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'server', component: ServerComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'numbers', component: NumbersComponent },
+  { path: 'ecomm', component: EcommComponent },
+  { path: 'accounts', component: AccountsComponent },
+  { path: 'observables', component: ObservablesComponent },
+  { path: 'tforms', component: TformsComponent },
+];
 
 @NgModule({
   declarations: [
@@ -28,12 +43,13 @@ import { NewaccountComponent } from './accounts/newaccount/newaccount.component'
     BasicHighlightDirective,
     AccountsComponent,
     AccountComponent,
-    NewaccountComponent
+    NewaccountComponent,
+    HomeComponent,
+    ObservablesComponent,
+    TformsComponent,
   ],
-  imports: [
-    BrowserModule,FormsModule
-  ],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
