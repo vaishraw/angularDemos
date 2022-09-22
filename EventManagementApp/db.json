@@ -1,0 +1,34 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "firstname": "Sebastian",
+      "lastname": "Eschweiler",
+      "email": "sebastian@codingthesmartway.com"
+    },
+    {
+      "id": 2,
+      "firstname": "Steve",
+      "lastname": "Palmer",
+      "email": "steve@codingthesmartway.com"
+    },
+    {
+      "id": 3,
+      "firstname": "Ann",
+      "lastname": "Smith",
+      "email": "ann@codingthesmartway.com"
+    },
+    {
+      "firstname": "Harry",
+      "lastname": "Kumar",
+      "email": "hkumar01@example.com",
+      "id": 4
+    },
+    {
+      "firstname": "Mary",
+      "lastname": "Anne",
+      "email": "mary10@example.com",
+      "id": 5
+    }
+  ]
+}

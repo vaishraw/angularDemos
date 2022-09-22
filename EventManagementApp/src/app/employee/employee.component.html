@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Management App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <div style="background-color: #1e272e">
+      <nav>
+        <div
+          class="navbar navbar-dark navbar-expand-sm"
+          style="background-color: #3c40c6"
+        >
+          <div class="container">
+            <img
+              src="https://www.freeiconspng.com/thumbs/female-icon/female-icon-27.png"
+              style="width: 10%"
+            />
+            <a class="navbar-brand" href="#">Employee Management App</a>
+            <button
+              class="navbar-toggler"
+              data-toggle="collapse"
+              data-target="#navbarNav2"
+              type="button"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-end"
+              id="navbarNav2"
+            >
+              <ul class="navbar-nav" style="color: #ffffff">
+                <li class="nav-item">
+                  <a class="nav-link" href="#all">All Employee</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#new">New Employee</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#update">Update Employee</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#delete">Delete Employee</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="row m-3" id="all">
+        <div class="col">
+          <h1 style="color: #ffffff">All Employee Details</h1>
+          <p *ngIf="fetchedEmp.length < 1">No Employees Available !!</p>
+          <ul class="list-group" *ngIf="fetchedEmp.length >= 1">
+            <li
+              class="list-group-item"
+              *ngFor="let emp of fetchedEmp"
+              style="background-color: #d2dae2"
+            >
+              <p>{{ emp.firstname }}</p>
+              <p>{{ emp.lastname }}</p>
+              <p>{{ emp.email }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="new1" />
+      <div
+        class="container m-2 justify-content-center"
+        style="width: 100%"
+        id="new"
+      >
+        <h1 style="color: #ffffff">Add New Employee</h1>
+        <form #f="ngForm">
+          <div class="row m-3">
+            <div class="form-group align-center" style="color: #ffffff">
+              <label for="firstname">FirstName</label>
+              <input
+                style="background-color: #d2dae2"
+                type="text"
+                id="firstname"
+                class="form-control"
+                name="firstname"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <div class="row m-3">
+            <div class="form-group" style="color: #ffffff">
+              <label for="lastname">LastName</label>
+              <input
+                style="background-color: #d2dae2"
+                type="text"
+                id="lastname"
+                class="form-control"
+                name="lastname"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row m-3">
+            <div class="form-group" style="color: #ffffff">
+              <label for="email">Email</label>
+              <input
+                style="background-color: #d2dae2"
+                id="email"
+                name="email"
+                class="form-control"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <div class="row m-3">
+            <div class="col">
+              <button
+                class="btn btn-info btn-sm"
+                [disabled]="!f.valid"
+                (click)="onCreateEmp(f.value, f)"
+              >
+                ADD
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <hr class="new1" />
+
+        <div
+          class="container m-2 justify-center"
+          id="update"
+          style="width: 100%"
+        >
+          <h1 style="color: #ffffff">Update Employee</h1>
+          <form #f="ngForm">
+            <div class="row m-3">
+              <div class="form-group" style="color: #ffffff">
+                <label for="id">ID</label>
+                <input
+                  style="background-color: #d2dae2"
+                  type="number"
+                  id="id"
+                  class="form-control"
+                  name="id"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <div class="row m-3">
+              <div class="form-group" style="color: #ffffff">
+                <label for="data">New Email</label>
+                <input
+                  style="background-color: #d2dae2"
+                  type="text"
+                  id="data"
+                  class="form-control"
+                  name="data"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row m-3">
+              <div class="col">
+                <button
+                  (click)="updateEmployee(f.id, f.value, f)"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  class="btn btn-info"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <hr class="new1" />
+
+        <div class="row m-3" id="delete" style="width: 100%">
+          <div class="col">
+            <h1 style="color: #ffffff">Delete Employee</h1>
+            <p
+              style="color: #ffffff"
+              class="text-start"
+              *ngIf="fetchedEmp.length < 1"
+            >
+              No Employees Available !!
+            </p>
+            <ul class="list-group" *ngIf="fetchedEmp.length >= 1">
+              <li
+                style="background-color: #d2dae2"
+                class="list-group-item"
+                *ngFor="let emp of fetchedEmp"
+              >
+                <p>{{ emp.firstname }}</p>
+                <p>{{ emp.lastname }}</p>
+                <p>{{ emp.email }}</p>
+                <button
+                  class="btn btn-sm btn-danger float-right"
+                  (click)="onDeletePost(emp.id)"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="new1" />
+      </div>
+    </div>
+  </body>
+</html>
