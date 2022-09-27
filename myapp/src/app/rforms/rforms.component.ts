@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormControl, FormGroup,  Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-rforms',
@@ -10,6 +10,8 @@ export class RformsComponent implements OnInit {
   genders = ['male', 'female'];
 
   signupForm: FormGroup;
+
+  submitted = false;
 
   constructor() {}
 
@@ -23,6 +25,7 @@ export class RformsComponent implements OnInit {
 
   onSubmit() {
     console.log(this.signupForm.value);
+    this.submitted=true;
   }
 }
 
